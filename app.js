@@ -26,18 +26,17 @@ function render() {
   list.innerHTML = '';
   let total = 0;
 
-  // ✅ using for...of loop
-  let index = 0;
-  for (const exp of expenses) {
+  // ✅ using simple for loop
+  for (let i = 0; i < expenses.length; i++) {
+    let exp = expenses[i];
     total += exp.amount;
     list.innerHTML += `
       <tr>
         <td data-label="Title"><span>${exp.title}</span></td>
         <td data-label="Category"><span>${exp.category}</span></td>
         <td data-label="Amount"><span>${exp.amount}</span></td>
-        <td data-label="Action"><button onclick="deleteExpense(${index})">Delete</button></td>
+        <td data-label="Action"><button onclick="deleteExpense(${i})">Delete</button></td>
       </tr>`;
-    index++; // manually track index
   }
 
   document.getElementById('total').textContent = total;
